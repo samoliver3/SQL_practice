@@ -1,5 +1,5 @@
 # SQL_practice
-Practice SQLite queries for UC Davis Coursera certification course
+This respository houses SQLite queries for the UC Davis Coursera certification course, which can be found [here](https://www.coursera.org/learn/sql-for-data-science/home/welcome)
 
 ## Guide for how to reproduce results on Windows
 1. Download command line tools and DLL [here](https://www.sqlite.org/download.html). I used SQLite version 3.39.4.
