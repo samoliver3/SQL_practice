@@ -1,0 +1,82 @@
+/**
+find the names of all the tracks for the album "Californication".
+**/
+
+SELECT
+a.title,
+t.name
+FROM album a INNER JOIN track t ON a.albumid=t.albumid
+WHERE a.title='Californication';
+
+/**
+Find the total number of invoices for each customer along with the customer's full name, city and email.
+Find the email for František Wichterlová
+**/
+
+SELECT
+c.firstname,
+c.lastname,
+c.email,
+c.city,
+(SELECT COUNT (*) AS TotalOrders 
+        FROM invoice i 
+        WHERE i.customerid=c.customerid) AS TotalOrders
+FROM customer c INNER JOIN invoice i ON c.customerid=i.customerid
+    WHERE lastname LIKE 'Wichter%';
+    
+/**
+Retrieve the track name, album, artistID, and trackID for all the albums.
+**/
+
+SELECT
+t.name,
+a.title,
+a.artistid,
+t.trackid
+FROM album a INNER JOIN track t ON a.albumid=t.albumid;
+
+/**
+Retrieve a list with the managers last name, and the last name of the employees who report to him or her.
+**/
+
+SELECT
+title,
+lastname,
+reportsto
+FROM employee;
+
+/**
+Find the name and ID of the artists who do not have albums.
+**/
+
+SELECT
+ar.name,
+ar.artistid,
+al.title
+FROM artist ar LEFT JOIN album al ON ar.artistid=al.artistid
+WHERE al.title IS NULL;
+
+/**
+Use a UNION to create a list of all the employee's and customer's first names and last names ordered by the last name in descending order.
+**/
+
+SELECT
+firstname,
+lastname
+FROM employee 
+UNION
+SELECT
+firstname,
+lastname
+FROM customer
+ORDER BY lastname DESC;
+
+/**
+See if there are any customers who have a different city listed in their billing city versus their customer city.
+**/
+
+SELECT
+c.city,
+i.billingcity
+FROM customer c INNER JOIN invoice i ON c.customerid=i.customerid
+WHERE c.city!=i.billingcity;
