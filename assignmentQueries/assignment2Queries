@@ -1,0 +1,86 @@
+/**
+Find all the tracks that have a length of 5,000,000 milliseconds or more.
+**/
+SELECT
+milliseconds
+FROM Track
+WHERE milliseconds >= 5000000;
+
+/**
+Find all the invoices whose total is between $5 and $15 dollars.
+**/
+SELECT
+total
+FROM invoice
+WHERE total BETWEEN 5 AND 15;
+
+/**
+Find all the customers from the following States: RJ, DF, AB, BC, CA, WA, NY.
+**/
+SELECT
+customerid,
+state,
+firstname,
+lastname,
+company
+FROM Customer
+WHERE State='RJ' OR State='DF' OR State='AB' OR State='BC' OR State='CA' OR State='WA' OR State='NY';
+
+/**
+Find all the invoices for customer 56 and 58 where the total was between $1.00 and $5.00.
+**/
+SELECT 
+customerid,
+total,
+INVOICEDATE,
+invoiceid
+FROM invoice
+WHERE (total BETWEEN 1 AND 5) AND invoiceid=315;
+
+/**
+Find all the tracks whose name starts with 'All'.
+**/
+SELECT
+Name
+FROM Track
+WHERE Name LIKE 'All%';
+
+/**
+Find all the customer emails that start with "J" and are from gmail.com.
+**/
+SELECT
+email
+FROM Customer
+WHERE email LIKE 'J%' AND email LIKE '%gmail.com';
+
+/**
+Find all the invoices from the billing city Brasília, Edmonton, and Vancouver and sort in descending order by invoice ID.
+**/
+SELECT
+billingcity,
+invoiceid,
+total
+FROM invoice
+WHERE billingcity='Brasilia' OR billingcity='Edmonton' OR billingcity='Vancouver'
+ORDER BY invoiceid DESC;
+
+/**
+Show the number of orders placed by each customer (hint: this is found in the invoices table)
+and sort the result by the number of orders in descending order.
+**/
+select
+customerid,
+COUNT(*) AS num_orders
+FROM invoice
+GROUP BY customerid
+ORDER BY num_orders DESC;
+
+/**
+Find the albums with 12 or more tracks.
+**/
+SELECT
+albumid,
+trackid
+FROM Track
+GROUP BY albumid
+HAVING COUNT (trackid) >= 12;
