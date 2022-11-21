@@ -8,3 +8,4 @@ This respository houses SQLite queries for the UC Davis Coursera certification c
 
 ## Repository Guide
 I included some of the queries I used for assignments in this class in the folder titled "assignmentQueries", which can be accessed [here](https://github.com/samoliver3/SQL_practice/tree/main/assignmentQueries).
+I also included the final assignment inside the folder "YelpDatasetProject". This project utilizes a different dataset other than the Chinook database and can be found [here](https://www.yelp.com/dataset) on Yelp's website hosting their Open Dataset project.
